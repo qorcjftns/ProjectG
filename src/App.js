@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import { MainController } from './engine/controller/MainController';
+import MainController from './engine/controller/MainController';
 
 class App extends Component {
 	
+	state = {};
+	
+	constructor() {
+		super();
+		// Set "this" as root view
+		MainController.getInstance().setRootView(this);
+	}
+	
+	addView(view) {
+		var temp_views = this.state.views;
+		temp_views.push(view);
+		this.setState({
+			views: temp_views
+		});
+	}
+	
 	render() {
-		
-		var mc = new MainController();
-		
 		return (
 			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
-					<a 	className="App-link"
-						href="https://reactjs.org"
-						target="_blank"
-						rel="noopener noreferrer" >
-						Learn React
-					</a>
-				</header>
+				{this.state.views}
 			</div>
 		);
 	}
