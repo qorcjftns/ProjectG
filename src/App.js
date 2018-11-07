@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { MainController } from './engine/controller/MainController';
+
 class App extends Component {
+	
 	render() {
+		
+		var mc = new MainController();
+		
 		return (
 			<div className="App">
 				<header className="App-header">
