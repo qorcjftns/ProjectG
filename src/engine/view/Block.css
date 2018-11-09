@@ -1,0 +1,57 @@
+@keyframes dropdown {
+	from { 
+		transform: translateY(-200px) rotateX(60deg); 
+		opacity:0;
+	}
+	to { 
+		transform: translateY(0) rotateX(60deg); 
+		opacity:1;
+	}
+}
+
+
+.Block {
+	width:100px;
+	height:100px;
+	position:fixed;
+	
+	display:inline-block;
+	
+	transform: rotateX(60deg);
+	
+	animation: dropdown 1s ease-in-out;
+}
+
+.Block .PanelTop,
+.Block .PanelLeft,
+.Block .PanelRight {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background:saddlebrown;
+}
+
+.PanelTopReal {
+	width:100%;
+	height:100%;
+}
+.PanelTop {
+	padding:1px;
+	transform: rotateZ(45deg);
+	transform-origin: center center;
+	background: #eee !important;
+}
+.PanelLeftRotate {
+	transform: translateY(121px) rotateZ(45deg);
+}
+.PanelLeft {
+	transform: skewX(45deg);
+	transform-origin: center center;
+}
+.PanelRightRotate {
+	transform: translateY(121px) rotateZ(-45deg);
+}
+.PanelRight {
+	transform: skewX(-45deg);
+	transform-origin: center center;
+}

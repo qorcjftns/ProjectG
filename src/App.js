@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
 import './App.css';
+
+import PGComponent from './engine/common/PGComponent';
 
 import MainController from './engine/controller/MainController';
 
-class App extends Component {
-	
-	state = {};
+class App extends PGComponent {
 	
 	constructor() {
 		super();
 		// Set "this" as root view
 		MainController.getInstance().setRootView(this);
-	}
-	
-	addView(view) {
-		var temp_views = this.state.views;
-		temp_views.push(view);
+		
 		this.setState({
-			views: temp_views
+			component_class: "App"
 		});
 	}
 	
+	componentDidMount() {
+		MainController.getInstance().run();
+	}
+	
 	render() {
-		return (
-			<div className="App">
-				{this.state.views}
-			</div>
-		);
+		return super.render();
 	}
 }
 
