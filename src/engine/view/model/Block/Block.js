@@ -2,13 +2,22 @@ import React from 'react';
 
 import './Block.css';
 
-import PGComponent from '../common/PGComponent';
+import PGComponent from '../../../common/PGComponent';
 
 class Block extends PGComponent {
 	
 	constructor(pos, top, left, right) {
 		super();
-		this.setState({component_class: "Block"});
+		this.state.pos = (pos === undefined) ? {x: 0, y: 0, z: 0} : pos;
+		this.state.top = (top === undefined) ? "#eaeaea" : top;
+		this.state.component_class = "Block";
+	}
+	
+	componentWillMount() {
+		this.setState({
+			top: "#eaeaea",
+			component_class: "Block"
+		});
 	}
 	
 	// Define renderer
@@ -19,9 +28,11 @@ class Block extends PGComponent {
 			background: top
 		};
 		
-		var toppos = ((pos.x + pos.y) * 35) - (pos.z * 71) - 25;
-		var leftpos = ((pos.x - pos.y) * 70) - 50;
-		var zindex = ((pos.x + pos.y) + 150) + (pos.z * 2);
+		var p = pos.pos;
+		
+		var toppos = ((p.x + p.y) * 35) - (p.z * 71) - 25;
+		var leftpos = ((p.x - p.y) * 70) - 50;
+		var zindex = ((p.x + p.y) + 150) + (p.z * 2);
 		
 		const blockstyle = {
 			top: 		"calc(50% + " + toppos + "px)",
@@ -30,7 +41,7 @@ class Block extends PGComponent {
 		};
 		
 		return (
-			<div className="Block" style={blockstyle}>
+			<div key="Block" className="Block" style={blockstyle}>
 				<div className="PanelTop"><div className="PanelTopReal" style={topstyle}></div></div>
 				<div className="PanelLeftRotate"><div className="PanelLeft"></div></div>
 				<div className="PanelRightRotate"><div className="PanelRight"></div></div>
@@ -38,5 +49,6 @@ class Block extends PGComponent {
 		);
 	};
 }
+
 
 export default Block;

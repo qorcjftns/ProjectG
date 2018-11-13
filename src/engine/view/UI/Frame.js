@@ -9,31 +9,28 @@ class Frame extends PGComponent {
 	constructor(pos, size) {
 		super();
 		this.state.pos = pos?pos:({
-			x: "calc(50% - 200px)",
-			y: "calc(50% - 150px)"
+			x: "calc(50% - 150px)",
+			y: "calc(50% - 75px)"
 		});
 		this.state.size = size?size:({
-			width: "400px",
-			height: "300px"
+			width: "300px",
+			height: "150px"
 		});
-		this.state.style = {
-			top: this.state.pos.x,
-			left: this.state.pos.y,
-			width: this.state.size.width,
-			height: this.state.size.height,
-		};
 	}
 	
-	componentWillMount() {
+	updatePos() {
 		this.setState({
 			style: {
-				top: this.state.pos.x,
-				left: this.state.pos.y,
+				top: this.state.pos.y,
+				left: this.state.pos.x,
 				width: this.state.size.width,
 				height: this.state.size.height,
 			}
 		});
-		console.log("..!");
+	}
+	
+	componentWillMount() {
+		this.updatePos();
 	}
 	
 	// Define renderer

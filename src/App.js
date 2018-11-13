@@ -1,27 +1,20 @@
+import React, { Component } from 'react';
 import './App.css';
 
-import PGComponent from './engine/common/PGComponent';
+import Map from './engine/view/model/Map/Map';
 
-import MainController from './engine/controller/MainController';
-
-class App extends PGComponent {
+class App extends Component {
 	
-	constructor() {
-		super();
-		// Set "this" as root view
-		MainController.getInstance().setRootView(this);
-		
-		this.setState({
-			component_class: "App"
-		});
-	}
 	
 	componentDidMount() {
-		MainController.getInstance().run();
+		
 	}
 	
 	render() {
-		return super.render();
+		// return super.render();
+		return ( 
+			<Map />
+		);
 	}
 }
 

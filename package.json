@@ -3,10 +3,13 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"crypto-js": "^3.1.9-1",
 		"mysql": "^2.16.0",
 		"react": "^16.5.2",
 		"react-dom": "^16.5.2",
+		"react-redux": "^5.1.1",
 		"react-scripts": "2.0.3",
+		"redux": "^4.0.1",
 		"socket.io-client": "^2.1.1"
 	},
 	"scripts": {

@@ -30,7 +30,7 @@ class NetworkController {
 		this.socket.emit(label, data);
 		this.socket.on(label, (ret) => {
 			callback(ret);
-			this.socket.removeListener(label, this);
+			this.socket.off(label);
 		});
 		return true;
 	}

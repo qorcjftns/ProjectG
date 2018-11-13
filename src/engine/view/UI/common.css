@@ -1,5 +1,84 @@
 
+@keyframes frame-init {
+	from {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+}
+
 .Frame {
 	background: #343434;
 	position: fixed;
+	box-shadow: 0px 0px 15px 5px black;
+	color: white;
+	animation: frame-init 0.5s ease-in-out;
+}
+
+.Frame.fadeout {
+	opacity: 0;
+	animation: fadeout 0.5s ease-in-out;
+}
+
+.FrameHeader {
+	width: 100%;
+	height: 25px;
+	background: #545454;
+	border-bottom: 1px solid #212121;
+	color: white;
+	text-align: center;
+}
+.FrameBody {
+	width: calc(100% - 20px);
+	height: calc(100% - 26px);
+	padding: 10px;
+}
+
+.form-data,
+.form-control {
+	padding: 5px;
+}
+.form-label,
+.form-input {
+	display: inline-block;
+}
+
+.form-label {
+	width:100px;
+}
+.form-input {
+	float:right;
+}
+.form-input input {
+	width:150px;
+}
+
+.form-control {
+	text-align:right;
+}
+.form-control .btn {
+	border: 0;
+	background: #898989;
+	margin: 5px;
+	cursor: pointer;
+	border: 1px solid black;
+}
+.form-control .btn:hover {
+	background: #6d6d6d;
+	color: white;
+	box-shadow: 0 0 2px 2px black;
 }

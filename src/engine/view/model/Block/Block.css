@@ -37,7 +37,7 @@
 }
 .PanelTop {
 	padding:1px;
-	transform: rotateZ(45deg);
+	transform: scale(0.99) translateX(-1px) rotateZ(45deg);
 	transform-origin: center center;
 	background: #eee !important;
 }
