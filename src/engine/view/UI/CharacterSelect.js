@@ -1,8 +1,10 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import './common.css';
 
 import Frame from './Frame';
+
+import {characterSelect} from '../../actions/User';
 
 class CharacterSelect extends Frame {
 	
@@ -20,13 +22,28 @@ class CharacterSelect extends Frame {
 	
 	
 	render() {
-		return (
-			<div className={this.state.main_class} style={this.state.style}>
-				CHAR SELECT
-			</div>
-		);
+		let {loggedIn, character} = this.props;
+		if(loggedIn && character===undefined) {
+			return (
+				<div className={this.state.main_class} style={this.state.style}>
+					CHARACTER SELECT
+				</div>
+			);
+		} else {
+			return (<div></div>);
+		}
 	}
 	
 }
 
-export default CharacterSelect;
+function mapStateToProps(state) {
+	return {
+		...state.game,	
+	};
+}
+
+const mapDispatchToProps = dispatch => ({
+	characterSelect: character => dispatch(characterSelect(character)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterSelect);

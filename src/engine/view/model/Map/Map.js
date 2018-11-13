@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './Map.css';
 import Block from '../Block/Block';
 
 class Map extends Component {
 	
 	// Define renderer
 	render() {
+		let { loggedIn, character } = this.props;
+		
 		var blocks = [];
 		for(var i = 0 ; i < this.props.blockData.length ; i++) {
-			console.log(this.props.blockData[i]);
 			blocks.push(<Block key={i} pos={{
 						x: this.props.blockData[i].x,
 						y: this.props.blockData[i].y,
@@ -18,7 +20,7 @@ class Map extends Component {
 		}
 		return (
 			<div className="Map">
-				{blocks}
+				{loggedIn&&character!==undefined?blocks:[]}
 			</div>
 		);
 	}
@@ -26,7 +28,8 @@ class Map extends Component {
 
 function mapStateToProps(state) {
 	return {
-		...state.map,	
+		...state.map,
+		...state.game,
 	};
 }
 

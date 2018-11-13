@@ -1,11 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './common.css';
 
 import Frame from './Frame';
 
-import MainController from '../../controller/MainController';
 import NetworkController from '../../controller/NetworkController';
+
+import {toggleLoading} from '../../actions/Loading';
+import {loginSuccess} from '../../actions/User';
 
 class LoginFrame extends Frame {
 	
@@ -25,12 +28,10 @@ class LoginFrame extends Frame {
 		// prevents submit
 		e.preventDefault();
 		
-		MainController.getInstance().toggleLoading();
-		
 		var login_id = e.target.login_id.value;
 		var login_pw = e.target.login_pw.value;
-		
-		 NetworkController.getInstance().communicate(
+		this.props.toggleLoading(true);
+		NetworkController.getInstance().communicate(
 			"user/login",
 			{
 				login_id: login_id,
@@ -38,16 +39,15 @@ class LoginFrame extends Frame {
 			}, 
 			(data) => {
 				if(data.result === 0) {
-					MainController.getInstance().onLoginSuccess();
 					this.setState({
 						main_class: "Frame fadeout"
 					});
+					this.props.loginSuccess();
 				} else {
 					console.log(data.err);
 				}
-				MainController.getInstance().toggleLoading();
+				this.props.toggleLoading(false);
 			});
-		
 	}
 	
 	render() {
@@ -88,4 +88,15 @@ class LoginFrame extends Frame {
 	
 }
 
-export default LoginFrame;
+function mapStateToProps(state) {
+	return {
+		...state.game,	
+	};
+}
+
+const mapDispatchToProps = dispatch => ({
+	toggleLoading: hide => dispatch(toggleLoading(hide)),
+	loginSuccess: () => dispatch(loginSuccess())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFrame);

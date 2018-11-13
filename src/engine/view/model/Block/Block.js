@@ -10,13 +10,28 @@ class Block extends PGComponent {
 		super();
 		this.state.pos = (pos === undefined) ? {x: 0, y: 0, z: 0} : pos;
 		this.state.top = (top === undefined) ? "#eaeaea" : top;
+		this.state.hover = false;
 		this.state.component_class = "Block";
+		
+		this.hoverIn = this.hoverIn.bind(this);
+		this.hoverOut = this.hoverOut.bind(this);
 	}
 	
 	componentWillMount() {
 		this.setState({
 			top: "#eaeaea",
 			component_class: "Block"
+		});
+	}
+	
+	hoverIn() {
+		this.setState({
+			component_class: "Block hover"
+		});
+	}
+	hoverOut() {
+		this.setState({
+			component_class: "Block hoverout"
 		});
 	}
 	
@@ -41,10 +56,26 @@ class Block extends PGComponent {
 		};
 		
 		return (
-			<div key="Block" className="Block" style={blockstyle}>
-				<div className="PanelTop"><div className="PanelTopReal" style={topstyle}></div></div>
-				<div className="PanelLeftRotate"><div className="PanelLeft"></div></div>
-				<div className="PanelRightRotate"><div className="PanelRight"></div></div>
+			<div className={this.state.component_class} style={blockstyle}>
+				<div className="PanelTop">
+					<div 
+						onMouseOver={this.hoverIn} 
+						onMouseOut={this.hoverOut} 
+						className="PanelTopReal"
+						style={topstyle}></div>
+				</div>
+				<div className="PanelLeftRotate">
+					<div 
+						onMouseOver={this.hover} 
+						onMouseOut={this.hoverOut} 
+						className="PanelLeft"></div>
+				</div>
+				<div className="PanelRightRotate">
+					<div 
+						onMouseOver={this.hover} 
+						onMouseOut={this.hoverOut} 
+						className="PanelRight"></div>
+				</div>
 			</div>
 		);
 	};
