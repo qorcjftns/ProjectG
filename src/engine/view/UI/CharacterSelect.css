@@ -1,0 +1,65 @@
+@keyframes shine-border {
+	0% {
+		filter: brightness(1);
+	}
+	50% {
+		filter: brightness(1.3);
+	}
+	100% {
+		filter: brightness(1);
+	}
+}
+
+/* width */
+::-webkit-scrollbar {
+    height: 10px;
+	width:	10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.Characters {
+	width:100%;
+	height: calc(100% - 50px);
+	align-items: center;
+	animation:none;
+}
+.Characters-wrapper {
+	height:100%;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+}
+
+.Character {
+	width: 150px;
+	height: 90%;
+	border: 2px solid #a0a0a0;
+	border-radius: 10px;
+	background-color: #7a7a7a;
+	cursor: pointer;
+	flex: 0 0 auto;
+	margin: 10px;
+}
+
+.Character:hover {
+	animation: shine-border 1s infinite;
+}
+
+.form-control {
+	height: 50px;
+	padding: 10px 0;
+}

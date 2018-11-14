@@ -22,7 +22,7 @@ class NetworkController {
 	
 
 	connect() {
-		this.socket = io('http://project-g-server.run.goorm.io');
+		this.socket = io('http://project-g-server.run.goorm.io/');
 	}
 
 	communicate(label, data, callback) {

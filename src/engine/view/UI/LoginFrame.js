@@ -51,39 +51,44 @@ class LoginFrame extends Frame {
 	}
 	
 	render() {
-		return (
-			<div className={this.state.main_class} style={this.state.style}>
-				<div className="FrameWrapper">
-					<div className="FrameHeader">
-						로그인
-					</div>
-					<div className="FrameBody">
-						<form className="login-form" onSubmit={this.formSubmit.bind(this)} method="POST">
-							<div className="form-data">
-								<div className="form-label">
-									사용자 ID
+		let {loggedIn} = this.props;
+		if(!loggedIn) {
+			return (
+				<div className={this.state.main_class} style={this.state.style}>
+					<div className="FrameWrapper">
+						<div className="FrameHeader">
+							로그인
+						</div>
+						<div className="FrameBody">
+							<form className="login-form" onSubmit={this.formSubmit.bind(this)} method="POST">
+								<div className="form-data">
+									<div className="form-label">
+										사용자 ID
+									</div>
+									<div className="form-input">
+										<input type="text" name="login_id" />
+									</div>
 								</div>
-								<div className="form-input">
-									<input type="text" name="login_id" />
+								<div className="form-data">
+									<div className="form-label">
+										사용자 PW
+									</div>
+									<div className="form-input">
+										<input type="password" name="login_pw" />
+									</div>
 								</div>
-							</div>
-							<div className="form-data">
-								<div className="form-label">
-									사용자 PW
+								<div className="form-control">
+									<button className="btn btn-join">회원가입</button>
+									<button className="btn btn-login">로그인</button>
 								</div>
-								<div className="form-input">
-									<input type="password" name="login_pw" />
-								</div>
-							</div>
-							<div className="form-control">
-								<button className="btn btn-join">회원가입</button>
-								<button className="btn btn-login">로그인</button>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return <div></div>;
+		}
 	}
 	
 }

@@ -46,7 +46,7 @@
 }
 .FrameBody {
 	width: calc(100% - 20px);
-	height: calc(100% - 26px);
+	height: calc(100% - 46px);
 	padding: 10px;
 }
 
@@ -78,6 +78,7 @@
 	margin: 5px;
 	cursor: pointer;
 	border: 1px solid black;
+	padding: 5px;
 }
 .form-control .btn:hover {
 	background: #6d6d6d;

@@ -8,13 +8,13 @@ class Frame extends PGComponent {
 	
 	constructor(pos, size) {
 		super();
-		this.state.pos = pos?pos:({
-			x: "calc(50% - 150px)",
-			y: "calc(50% - 75px)"
-		});
 		this.state.size = size?size:({
-			width: "300px",
-			height: "150px"
+			width: 300,
+			height: 150
+		});
+		this.state.pos = pos?pos:({
+			x: "calc(50% - " + this.state.size.width/2 + "px)",
+			y: "calc(50% - " + this.state.size.height/2 + "px)"
 		});
 	}
 	
